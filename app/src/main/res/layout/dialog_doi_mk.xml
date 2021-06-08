@@ -30,9 +30,8 @@
             android:elevation="4dp"
             android:hint="nhập mật khẩu mới"
             android:paddingStart="10dp"
-            android:textColor="#ffff"
             android:textSize="14dp"
-            android:textColorHint="#fff" />
+            android:textColorHint="#75746E" />
 
         <EditText
             android:id="@+id/edtConfirmPass1"
@@ -44,8 +43,7 @@
             android:textSize="14dp"
             android:hint="nhập lại mật khẩu"
             android:paddingStart="10dp"
-            android:textColor="#ffff"
-            android:textColorHint="#fff" />
+            android:textColorHint="#75746E" />
 
         <Button
             android:id="@+id/btnOk"

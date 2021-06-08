@@ -20,8 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    DrawerLayout drawerLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,35 +34,28 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
 
     //click bottom menu
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId()) {
-                        case R.id.sanPhamFragment:
-                            selectedFragment = new SanPhamFragment();
-                            break;
-                        case R.id.hoaDonFragment:
-                            selectedFragment = new HoaDonFragment();
-                            break;
-                        case R.id.thongKeFragment:
-                            selectedFragment = new ThongKeFragment();
-                            break;
-                        case R.id.taiKhoanFragment:
-                            selectedFragment = new TaiKhoanFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.right_to_left, R.anim.exit_rtl, R.anim.left_to_right, R.anim.exit_ltr).replace(R.id.layout_big, selectedFragment).commit();
-                    return true;
+            item -> {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.sanPhamFragment:
+                        selectedFragment = new SanPhamFragment();
+                        break;
+                    case R.id.hoaDonFragment:
+                        selectedFragment = new HoaDonFragment();
+                        break;
+                    case R.id.thongKeFragment:
+                        selectedFragment = new ThongKeFragment();
+                        break;
+                    case R.id.taiKhoanFragment:
+                        selectedFragment = new TaiKhoanFragment();
+                        break;
                 }
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.right_to_left, R.anim.exit_rtl, R.anim.left_to_right, R.anim.exit_ltr).replace(R.id.layout_big, selectedFragment).commit();
+                return true;
             };
 }

@@ -5,21 +5,21 @@
     android:id="@+id/fragmentDn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".Activity.DangNhapActivity"
     tools:ignore="MissingConstraints">
 
     <TextView
         android:id="@+id/tvlg"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:elevation="5dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:paddingStart="30dp"
         android:text="Đăng nhập"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textColor="#0E0D0D"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -39,13 +39,14 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_logo" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -58,10 +59,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_edt"
                 android:elevation="4dp"
-                android:padding="10dp"
                 android:hint="Tên tài khoản"
                 android:inputType="text"
-                />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/edtMatKhau"
@@ -71,8 +71,8 @@
                 android:background="@drawable/bg_edt"
                 android:elevation="4dp"
                 android:hint="mật khẩu"
-                android:padding="10dp"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:padding="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,7 +118,7 @@
     <LinearLayout
         android:id="@+id/layout_2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/layout_1"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -126,13 +126,13 @@
         <Button
             android:id="@+id/btnDangKy1"
             android:layout_width="300dp"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/bg_lg1"
             android:elevation="8dp"
             android:text="Đăng Ký"
             android:textColor="#fff"
             android:textStyle="bold" />
-
     </LinearLayout>
+
 </RelativeLayout>

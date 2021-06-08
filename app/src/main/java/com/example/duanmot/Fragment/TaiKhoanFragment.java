@@ -26,6 +26,7 @@ import com.example.duanmot.Entity.TaiKhoan;
 import com.example.duanmot.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -167,7 +168,7 @@ public class TaiKhoanFragment extends Fragment {
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
+                        requireActivity().finish();
                     }
                 })
                 .setNegativeButton("Không", new DialogInterface.OnClickListener() {

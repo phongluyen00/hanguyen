@@ -141,6 +141,7 @@ public class SanPhamFragment extends Fragment {
                         EditText editTextGiaSP = sheetDialog.findViewById(R.id.edtGiaSpS);
                         EditText editTextSoLuong = sheetDialog.findViewById(R.id.edtSoluongS);
                         Button buttonThemSP = sheetDialog.findViewById(R.id.btnThemSPS);
+                        Button btnShowMonHoc = sheetDialog.findViewById(R.id.btnHuyS);
                         //
                         editTextTenSp.setText(sanPham.getTenSanPham());
                         editTextGiaSP.setText(String.valueOf(sanPham.getGiaSanPham()));
@@ -151,6 +152,14 @@ public class SanPhamFragment extends Fragment {
 
                         spinnerLoaiSP.setAdapter(dataAdapter);
 
+                        assert btnShowMonHoc != null;
+                        btnShowMonHoc.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                sheetDialog.dismiss();
+                            }
+                        });
+                        assert buttonThemSP != null;
                         buttonThemSP.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -235,75 +244,76 @@ public class SanPhamFragment extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Bạn muốn thêm ? ");
-                builder.setNegativeButton("Sản Phẩm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        BottomSheetDialog sheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme);
-                        sheetDialog.setContentView(R.layout.dialog_them_sp);
-                        sheetDialog.setCanceledOnTouchOutside(false);
-                        //
-                        EditText editTextTenSp = sheetDialog.findViewById(R.id.edtTenSp);
-                        Spinner spinnerLoaiSP = sheetDialog.findViewById(R.id.spLoai);
-                        EditText editTextGiaSP = sheetDialog.findViewById(R.id.edtGiaSp);
-                        EditText editTextSoLuong = sheetDialog.findViewById(R.id.edtSoluong);
-                        Button buttonThemSP = sheetDialog.findViewById(R.id.btnThemSP);
-                        //
-                        databaseLoaiSP = DatabaseLoaiSP.getInstance(getContext());
-                        List<LoaiSanPham> loaiSanPhams = (ArrayList<LoaiSanPham>)
-                                databaseLoaiSP.daoLoaiSanPham().loaiSanPham_LIST();
-                        List<String> stringList = new ArrayList<>();
+                builder.setNegativeButton("Sản Phẩm", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    BottomSheetDialog sheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme);
+                    sheetDialog.setContentView(R.layout.dialog_them_sp);
+                    sheetDialog.setCanceledOnTouchOutside(false);
+                    //
+                    EditText editTextTenSp = sheetDialog.findViewById(R.id.edtTenSp);
+                    Spinner spinnerLoaiSP = sheetDialog.findViewById(R.id.spLoai);
+                    EditText editTextGiaSP = sheetDialog.findViewById(R.id.edtGiaSp);
+                    EditText editTextSoLuong = sheetDialog.findViewById(R.id.edtSoluong);
+                    Button buttonThemSP = sheetDialog.findViewById(R.id.btnThemSP);
+                    Button btnShowMonHoc = sheetDialog.findViewById(R.id.btnShowMonHoc);
+                    //
+                    databaseLoaiSP = DatabaseLoaiSP.getInstance(getContext());
+                    List<LoaiSanPham> loaiSanPhams = (ArrayList<LoaiSanPham>)
+                            databaseLoaiSP.daoLoaiSanPham().loaiSanPham_LIST();
+                    List<String> stringList = new ArrayList<>();
 
-                        for (LoaiSanPham loaiSanPham : loaiSanPhams) {
-                            stringList.add(loaiSanPham.getLoaiSanPham());
-                        }
-
-                        ArrayAdapter dataAdapter = new ArrayAdapter(getContext(),
-                                R.layout.support_simple_spinner_dropdown_item, stringList);
-
-                        spinnerLoaiSP.setAdapter(dataAdapter);
-
-                        buttonThemSP.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                String tenSP = editTextTenSp.getText().toString();
-                                String giaSp = String.valueOf(editTextGiaSP.getText());
-                                String soLuongSP = String.valueOf(editTextSoLuong.getText());
-                                //Get item đưuọc chọn từ spinner
-                                String loai = spinnerLoaiSP.getSelectedItem().toString();
-                                if (tenSP.isEmpty()) {
-                                    editTextTenSp.setError("Nhập tên sản phẩm");
-                                    return;
-                                }
-                                if (giaSp.isEmpty()) {
-                                    editTextGiaSP.setError("Nhập giá sản phẩm");
-                                    return;
-                                }
-                                if (soLuongSP.isEmpty()) {
-                                    editTextSoLuong.setError("Nhập số lượng sản phẩm");
-                                    return;
-                                }
-
-                                try {
-                                    SanPham sanPham = new SanPham(tenSP, loai, Double.parseDouble(giaSp), Integer.parseInt(soLuongSP));
-                                    DatabaseSanPham databaseSanPham = DatabaseSanPham.getInstance(getContext());
-                                    databaseSanPham.daoSanPham().InsertSanPham(sanPham);
-                                    Toast.makeText(context, "Thêm thành công !", Toast.LENGTH_SHORT).show();
-                                    ArrayList<SanPham> sanPhams = (ArrayList<SanPham>)
-                                            databaseSanPham.daoSanPham().SANPHAM_LIST();
-                                    SanPhamAdapter aqAdapter = new SanPhamAdapter(sanPhams, getContext());
-                                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                                    mRecyclerViewSanpham.setAdapter(aqAdapter);
-                                    mRecyclerViewSanpham.setLayoutManager(layoutManager);
-                                    sheetDialog.dismiss();
-                                } catch (Exception e) {
-                                    Log.e("Error", "" + e);
-                                    Toast.makeText(requireActivity(), "Co loi xay ra", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                        sheetDialog.show();
+                    for (LoaiSanPham loaiSanPham : loaiSanPhams) {
+                        stringList.add(loaiSanPham.getLoaiSanPham());
                     }
+
+                    ArrayAdapter dataAdapter1 = new ArrayAdapter(getContext(),
+                            R.layout.support_simple_spinner_dropdown_item, stringList);
+
+                    spinnerLoaiSP.setAdapter(dataAdapter1);
+
+                    assert btnShowMonHoc != null;
+                    btnShowMonHoc.setOnClickListener(v12 -> sheetDialog.dismiss());
+                    assert buttonThemSP != null;
+                    buttonThemSP.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v1) {
+
+                            String tenSP = editTextTenSp.getText().toString();
+                            String giaSp = String.valueOf(editTextGiaSP.getText());
+                            String soLuongSP = String.valueOf(editTextSoLuong.getText());
+                            //Get item đưuọc chọn từ spinner
+                            String loai = spinnerLoaiSP.getSelectedItem().toString();
+                            if (tenSP.isEmpty()) {
+                                editTextTenSp.setError("Nhập tên sản phẩm");
+                                return;
+                            }
+                            if (giaSp.isEmpty()) {
+                                editTextGiaSP.setError("Nhập giá sản phẩm");
+                                return;
+                            }
+                            if (soLuongSP.isEmpty()) {
+                                editTextSoLuong.setError("Nhập số lượng sản phẩm");
+                                return;
+                            }
+
+                            try {
+                                SanPham sanPham = new SanPham(tenSP, loai, Double.parseDouble(giaSp), Integer.parseInt(soLuongSP));
+                                DatabaseSanPham databaseSanPham = DatabaseSanPham.getInstance(getContext());
+                                databaseSanPham.daoSanPham().InsertSanPham(sanPham);
+                                Toast.makeText(context, "Thêm thành công !", Toast.LENGTH_SHORT).show();
+                                ArrayList<SanPham> sanPhams = (ArrayList<SanPham>)
+                                        databaseSanPham.daoSanPham().SANPHAM_LIST();
+                                SanPhamAdapter aqAdapter = new SanPhamAdapter(sanPhams, getContext());
+                                LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+                                mRecyclerViewSanpham.setAdapter(aqAdapter);
+                                mRecyclerViewSanpham.setLayoutManager(layoutManager1);
+                                sheetDialog.dismiss();
+                            } catch (Exception e) {
+                                Log.e("Error", "" + e);
+                                Toast.makeText(requireActivity(), "Co loi xay ra", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    sheetDialog.show();
                 });
 
                 builder.setPositiveButton("Loại Sản Phẩm ", new DialogInterface.OnClickListener() {

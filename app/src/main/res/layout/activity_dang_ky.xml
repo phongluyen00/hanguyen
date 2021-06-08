@@ -3,37 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     android:weightSum="2"
     tools:context=".Activity.DangKyActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="0.1"
         android:elevation="6dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:paddingStart="25dp"
         android:text="Đăng ký"
-        android:textColor="#ffff"
-        android:textSize="30sp"
+        android:textColor="#000000"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
         android:layout_weight="1.7"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_logo" />
 
@@ -53,11 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
             android:hint="Mật khẩu"
             android:inputType="numberPassword"
+            android:padding="10dp"
             android:paddingStart="10dp" />
 
         <EditText
@@ -65,22 +64,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
             android:hint="Số điện thoại"
             android:inputType="number"
+            android:padding="10dp"
             android:paddingStart="10dp" />
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
             android:hint="Email"
+            android:padding="10dp"
             android:paddingStart="10dp" />
 
         <Button
