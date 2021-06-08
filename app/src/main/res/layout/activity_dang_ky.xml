@@ -17,9 +17,9 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:paddingStart="25dp"
-        android:text="Sign Up"
+        android:text="Đăng ký"
         android:textColor="#ffff"
-        android:textSize="35dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -52,8 +52,9 @@
         <EditText
             android:id="@+id/edtNhapMk"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
             android:hint="Mật khẩu"
@@ -63,8 +64,9 @@
         <EditText
             android:id="@+id/edtSdt"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
             android:hint="Số điện thoại"
@@ -74,7 +76,8 @@
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_edt"
             android:elevation="4dp"
@@ -84,7 +87,7 @@
         <Button
             android:id="@+id/btnDangKy2"
             android:layout_width="300dp"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_lg1"
             android:elevation="8dp"
