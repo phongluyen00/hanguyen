@@ -2,6 +2,7 @@ package com.example.duanmot.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,24 +18,34 @@ import com.example.duanmot.Fragment.TaiKhoanFragment;
 import com.example.duanmot.Fragment.ThongKeFragment;
 import com.example.duanmot.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    int position = 0;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toast.makeText(HomeActivity.this, "Dang Nhap Thanh Cong", Toast.LENGTH_SHORT).show();
         bottomNavigationView = findViewById(R.id.nav_bottom_bar);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+        relativeLayout = findViewById(R.id.drawerLayout);
         getSupportFragmentManager().beginTransaction().replace(R.id.layout_big, new SanPhamFragment()).commit();
     }
 
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (position == 0) {
+            position += 1;
+            Snackbar.make(relativeLayout, "Nhấn tiếp để thoát khỏi ứng dụng", Snackbar.LENGTH_LONG).show();
+            return;
+        }
+        if (position >= 1) {
+            super.onBackPressed();
+        }
     }
 
     //click bottom menu

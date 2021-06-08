@@ -129,6 +129,7 @@ public class HoaDonFragment extends Fragment {
                 EditText mEditTextDC = dialogHoaDon.findViewById(R.id.edtDiaChi);
                 EditText mEditText = dialogHoaDon.findViewById(R.id.edtSdtKh);
                 Button mButtonThanhToan = dialogHoaDon.findViewById(R.id.btnThanhToandal);
+                Button btnShowMonHoc = dialogHoaDon.findViewById(R.id.btnShowMonHoc);
                 Button mButtonHuy = dialogHoaDon.findViewById(R.id.btnShowMonHoc);
                 TextView mTextViewTOngTien = dialogHoaDon.findViewById(R.id.tvTongTien);
                 mTextViewTOngTien.setText("Tổng Tiền : "+thanhtien);
@@ -149,38 +150,37 @@ public class HoaDonFragment extends Fragment {
                         });
                     }
                 });
-                mButtonThanhToan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                btnShowMonHoc.setOnClickListener(v1 -> dialogHoaDon.dismiss());
+                mButtonThanhToan.setOnClickListener(v12 -> {
 
-                        if(thanhtien == 0){
-                            Toast.makeText(getContext(), "Không thể thanh toán !", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        HoaDon hoaDon = new HoaDon();
-                        hoaDon.setNgayLap(ngay);
-                        hoaDon.setDiaChi(mEditTextDC.getText().toString());
-                        hoaDon.setTenKhachHang(mEditTextTenKH.getText().toString());
-                        hoaDon.setSoDienThoaiKh(mEditText.getText().toString());
-                        hoaDon.setTongTien(thanhtien);
-
-                        try {
-                            databaseHoaDon.daoHoaDon().InsertHoaDon(hoaDon);
-
-                            Toast.makeText(getContext(), "Thành công ! ", Toast.LENGTH_SHORT).show();
-                            databaseDonHang.daoDonHang().DeleteTable();
-                            List<DonHang> donHangs = databaseDonHang.daoDonHang().DON_HANG_LIST();
-                            DonHangAdapter donHangAdapter = new DonHangAdapter((ArrayList<DonHang>) donHangs,getContext());
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                            rcvHoaDon.setLayoutManager(linearLayoutManager);
-                            rcvHoaDon.setAdapter(donHangAdapter);
-                            dialogHoaDon.dismiss();
-                        }catch (Exception e){
-                            Log.e("ERRO",""+e);
-                        }
-
-
+                    if(thanhtien == 0){
+                        dialogHoaDon.dismiss();
+                        Toast.makeText(getContext(), "Không thể thanh toán !", Toast.LENGTH_SHORT).show();
+                        return;
                     }
+                    HoaDon hoaDon = new HoaDon();
+                    hoaDon.setNgayLap(ngay);
+                    hoaDon.setDiaChi(mEditTextDC.getText().toString());
+                    hoaDon.setTenKhachHang(mEditTextTenKH.getText().toString());
+                    hoaDon.setSoDienThoaiKh(mEditText.getText().toString());
+                    hoaDon.setTongTien(thanhtien);
+
+                    try {
+                        databaseHoaDon.daoHoaDon().InsertHoaDon(hoaDon);
+
+                        Toast.makeText(getContext(), "Thành công ! ", Toast.LENGTH_SHORT).show();
+                        databaseDonHang.daoDonHang().DeleteTable();
+                        List<DonHang> donHangs = databaseDonHang.daoDonHang().DON_HANG_LIST();
+                        DonHangAdapter donHangAdapter1 = new DonHangAdapter((ArrayList<DonHang>) donHangs,getContext());
+                        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
+                        rcvHoaDon.setLayoutManager(linearLayoutManager1);
+                        rcvHoaDon.setAdapter(donHangAdapter1);
+                        dialogHoaDon.dismiss();
+                    }catch (Exception e){
+                        Log.e("ERRO",""+e);
+                    }
+
+
                 });
 
 
