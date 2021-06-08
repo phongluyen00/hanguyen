@@ -5,7 +5,6 @@
     android:id="@+id/fragmentDn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg_lgrg"
     android:gravity="center"
     tools:context=".Activity.DangNhapActivity"
     tools:ignore="MissingConstraints">
@@ -40,8 +39,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_logo" />
         </LinearLayout>
