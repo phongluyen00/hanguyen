@@ -20,7 +20,7 @@
         android:padding="10dp"
         android:text="Thêm Loại Sản Phẩm"
         android:textAlignment="center"
-        android:textColor="#0861A8"
+        android:textColor="#FFFFFF"
         android:textSize="16dp"
         android:textStyle="bold" />
 
