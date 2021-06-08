@@ -55,28 +55,28 @@
 
             <EditText
                 android:id="@+id/edtTenDn"
-                android:layout_width="250dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_edt"
                 android:elevation="4dp"
-                android:hint="tên đăng nhập"
+                android:padding="10dp"
+                android:hint="Tên tài khoản"
                 android:inputType="text"
-                android:paddingStart="10dp" />
+                />
 
             <EditText
                 android:id="@+id/edtMatKhau"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_edt"
                 android:elevation="4dp"
                 android:hint="mật khẩu"
-                android:inputType="textPassword"
-                android:paddingStart="10dp" />
+                android:padding="10dp"
+                android:inputType="textPassword" />
 
             <LinearLayout
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:orientation="horizontal"
@@ -104,8 +104,8 @@
 
             <Button
                 android:id="@+id/btnDangNhap"
-                android:layout_width="120dp"
-                android:layout_height="38dp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_lg1"
                 android:elevation="8dp"
@@ -124,47 +124,9 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="-or-"
-            android:textSize="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="20dp"
-                android:contentDescription="TODO"
-                android:elevation="5dp"
-                android:src="@drawable/ic_fb" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="20dp"
-                android:contentDescription="TODO"
-                android:elevation="5dp"
-                android:src="@drawable/ic_gg" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="TODO"
-                android:elevation="5dp"
-                android:src="@drawable/ic_tw" />
-        </LinearLayout>
         <Button
             android:id="@+id/btnDangKy1"
-            android:layout_width="120dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_lg1"
