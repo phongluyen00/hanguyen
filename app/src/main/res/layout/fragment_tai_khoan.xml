@@ -4,21 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#08F5F5F6"
     tools:context=".Fragment.TaiKhoanFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_alignParentTop="true"
         android:id="@+id/rcvTaiKhoan"
+        tools:listitem="@layout/item_tk"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp" />
+        android:layout_above="@id/ll_info"/>
 
     <LinearLayout
+        android:layout_marginBottom="30dp"
+        android:id="@+id/ll_info"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rcvTaiKhoan"
-        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -28,6 +33,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:elevation="8dp"
+            android:visibility="gone"
             app:cardCornerRadius="10dp">
 
             <TextView
