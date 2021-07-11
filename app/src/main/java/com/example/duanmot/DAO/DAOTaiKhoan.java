@@ -19,6 +19,9 @@ public interface DAOTaiKhoan {
     @Query("Select * from taikhoan_db")
     List<TaiKhoan> TAI_KHOAN_LIST();
 
+    @Query("Select * from taikhoan_db where tenTaiKhoan =(:nameAccount)")
+    TaiKhoan checkAccountEmpty(String nameAccount);
+
     @Insert
     void InsertTaiKhoan(TaiKhoan taiKhoan);
 

@@ -17,9 +17,10 @@
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:text="Quên mật khẩu"
-        android:textColor="#ffff"
+        android:textColor="@android:color/black"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:layout_width="match_parent"
